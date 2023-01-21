@@ -41,11 +41,9 @@ class Circle {
         const distance = Math.sqrt(((xmouse - this.xpoint) * (xmouse - this.xpoint)) + 
         ((ymouse- this.ypoint) * (ymouse - this.ypoint)));
 
-        if (distance < this.radius) {
-            // this.changeColor('pink')
+        if (distance < this.radius) {            
             return true;
         } else {
-            // this.changeColor('red')
             return false;
         }
     }
@@ -55,7 +53,6 @@ class Arrow {
         this.xpoint = xpoint;
         this.ypoint = ypoint;
         this.speed = speed;
-
         this.dx = 1 * speed
     }
 
@@ -88,17 +85,10 @@ class Arrow {
     }
 }
 
-
-
-
-
 let getDistance = function(xpoint1,ypoint1,xpoint2,ypoint2) {
     let result = Math.sqrt(Math.pow(xpoint2-xpoint1 , 2) + Math.pow(ypoint2-ypoint1 , 2));
     return result;
 }
-
-
-
 
 let circle1 = new Circle(270,100,40,'#dfed5f');
 circle1.draw(context);
@@ -117,18 +107,10 @@ let updateArrow1 = function() {
     circle3.draw(context);
     Arrow4.draw(context);
     circle4.draw(context);
-
-    console.log(circle1.xpoint,circle1.ypoint,Arrow1.xpoint,Arrow1.ypoint) 
-
     if (getDistance(circle1.xpoint,circle1.ypoint,Arrow1.xpoint,Arrow1.ypoint) <= circle1.radius + 2) {
         circle1.color = 'grey';    
-    }
-    
+    }    
 }
-
-
-
-
 
 let circle2 = new Circle(270,250,40,'#3d7be0');
 circle2.draw(context);
@@ -147,19 +129,11 @@ let updateArrow2 = function() {
     circle3.draw(context);
     Arrow4.draw(context);
     circle4.draw(context);
-    
 
     if (getDistance(circle2.xpoint,circle2.ypoint,Arrow2.xpoint,Arrow2.ypoint) <= circle2.radius + 2) {
         circle2.color = 'grey';    
-    }
-    
+    }    
 }
-
-
-
-
-
-
 
 let circle3 = new Circle(270,400,40,'#f24a44');
 circle3.draw(context);
@@ -178,17 +152,10 @@ let updateArrow3 = function() {
     circle2.draw(context);
     Arrow4.draw(context);
     circle4.draw(context);
-
     if (getDistance(circle3.xpoint,circle3.ypoint,Arrow3.xpoint,Arrow3.ypoint) <= circle3.radius + 2) {
         circle3.color = 'grey';    
-    }
-    
+    }    
 }
-
-
-
-
-
 
 let circle4 = new Circle(270,550,40,'#3dd95f');
 circle4.draw(context);
@@ -214,8 +181,6 @@ let updateArrow4 = function() {
     
 }
 
-
-
 let isCircle1clicked;
 let isCircle2clicked;
 let isCircle3clicked;
@@ -240,22 +205,12 @@ canvas.addEventListener('click', (event)=> {
     } 
     else if (isCircle4clicked) {
         updateArrow4();
-    } 
-    // console.log(isCircle1clicked);
-    // console.log(isCircle2clicked);
-    // console.log(isCircle3clicked);
-    // console.log(isCircle4clicked);
+    }     
 });
-
-
-
-
 
 let btnElement = document.getElementById('button');
 btnElement.addEventListener('click' , () => {
-
     context.clearRect(0,0,window_width,window_height);
-
     isCircle1clicked = false;
     circle1.onReset('#dfed5f');
     Arrow1.onReset();
@@ -275,8 +230,5 @@ btnElement.addEventListener('click' , () => {
     circle4.onReset('#3dd95f');
     isCircle4clicked = false;
     cancelAnimationFrame(z);
-    Arrow4.onReset();
-    
+    Arrow4.onReset();    
 });
-
-
